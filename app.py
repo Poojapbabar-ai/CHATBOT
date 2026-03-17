@@ -6,11 +6,17 @@ import groq
 load_dotenv()
 
 # Read your prompt file
-with open("prompt.txt", "r") as f:
+
+#------------- as i used emoji's we needed to change the encoding to utf-8 -------------
+# with open("prompt.txt", "r") as f:
+#     my_prompt = f.read()
+
+with open("prompt.txt", "r", encoding="utf-8") as f:
     my_prompt = f.read()
 
 client = groq.Groq(api_key=os.getenv("GROQ_API_KEY"))
 
+# user_question = "what are the thyroxine 75 mcg price"
 user_question = "what are the thyroxine 75 mcg price"
 
 response = client.chat.completions.create(
